@@ -1,24 +1,26 @@
-const { resolve } = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const { resolve } = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-  entry: "./src/index.jsx",
-  mode: "development",
+  entry: './src/index.jsx',
+  mode: 'development',
   output: {
-    filename: "js/[name].bundle.js",
-    path: resolve(__dirname, "dist"),
-    publicPath: "/",
+    filename: 'js/[name].bundle.js',
+    path: resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   devServer: {
     hot: true,
     open: true,
     static: {
-      directory: resolve(__dirname, "dist"),
+      directory: resolve(__dirname, 'dist'),
     },
     // contentBase: resolve(__dirname, 'dist'),
     port: 8080,
-    host: "localhost",
+    host: 'localhost',
     // index: 'index.html',
     client: {
       overlay: {
@@ -29,15 +31,15 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //   enforce: 'pre',
-      //   test: /\.(js|jsx)$/,
-      //   use: ["eslint-loader"],
-      //   exclude: /node_modules/,
-      // },
+      {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        use: ['eslint-loader'],
+        exclude: /node_modules/,
+      },
       {
         test: /\.(js|jsx)$/,
-        use: ["babel-loader"],
+        use: ['babel-loader'],
         exclude: /node_modules/,
       },
       {
@@ -46,11 +48,11 @@ const config = {
           {
             loader: MiniCSSExtractPlugin.loader,
             options: {
-              publicPath: "../",
+              publicPath: '../',
             },
           },
-          "css-loader",
-          "sass-loader",
+          'css-loader',
+          'sass-loader',
         ],
         exclude: /node_modules/,
       },
@@ -58,13 +60,13 @@ const config = {
   },
   plugins: [
     new MiniCSSExtractPlugin({
-      filename: "css/main.css",
+      filename: 'css/main.css',
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: `${__dirname}/src/index.html`,
-          to: "index.html",
+          to: 'index.html',
         },
       ],
     }),

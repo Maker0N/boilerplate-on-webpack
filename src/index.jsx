@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './main.scss'
 
-const Home = () => {
-  return <div>123456789</div>
-}
+const Home = () => <div>123456789</div>
 
-ReactDOM.render(<Home />, document.querySelector('#root'))
+const target = document.getElementById('root')
+
+ReactDOM.render(<Home />, target)
