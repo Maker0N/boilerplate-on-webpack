@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+// eslint-disable-next-line import/extensions
+import Home from './components/home.jsx'
 import './main.scss'
-
-const Home = () => <div>123456789</div>
 
 const target = document.getElementById('root')
 

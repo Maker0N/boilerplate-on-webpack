@@ -1,8 +1,47 @@
-body {
+#root {
   display: flex;
-  color: green;
   justify-content: center;
   align-items: center;
   background: beige;
-  height: 100vh
+  height: 100vh;
+}
+
+.initial {
+  color: rgb(95, 158, 160);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(25, 25, 112);
+  height: 180px;
+  width: 300px;
+  border-radius: 20px;
+  font-size: 2em;
+}
+
+.rotate {
+  transform: rotate3d(1, 2.0, 3.0, -360deg) translateY(-300px);
+  transition: 4s;
+  color: rgb(95, 158, 160);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(25, 25, 112);
+  height: 180px;
+  width: 300px;
+  border-radius: 20px;
+  font-size: 2em;
+}
+
+.back {
+  transform: rotate3d(1, 2.0, 3.0, 360deg) translateY(0px);
+  transition: 4s;
+  color: rgb(95, 158, 160);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(25, 25, 112);
+  height: 180px;
+  width: 300px;
+  border-radius: 20px;
+  font-size: 2em;
 }

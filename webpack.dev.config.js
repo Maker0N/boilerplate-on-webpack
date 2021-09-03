@@ -2,7 +2,7 @@ const { resolve } = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: './src/index.jsx',
@@ -45,23 +45,32 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          {
-            loader: MiniCSSExtractPlugin.loader,
-            options: {
-              publicPath: '../',
-            },
-          },
+          // {
+          //   loader: MiniCSSExtractPlugin.loader,
+          //   options: {
+          //     publicPath: '../',
+          //   },
+          // },
+          'style-loader',
           'css-loader',
           'sass-loader',
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/inline',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/inline',
+      },
     ],
   },
   plugins: [
-    new MiniCSSExtractPlugin({
-      filename: 'css/main.css',
-    }),
+    // new MiniCSSExtractPlugin({
+    //   filename: 'css/main.css',
+    // }),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -71,6 +80,6 @@ const config = {
       ],
     }),
   ],
-};
+}
 
 module.exports = config;
