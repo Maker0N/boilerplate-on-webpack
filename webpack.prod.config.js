@@ -1,14 +1,10 @@
-const { resolve } = require('path');
-// eslint-disable-next-line import/no-extraneous-dependencies
+const { resolve } = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
-// eslint-disable-next-line import/no-extraneous-dependencies
-// const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const config = {
+  mode: 'production',
   entry: './src/index.jsx',
-  mode: 'development',
   output: {
     filename: 'js/[name].[contenthash].js',
     path: resolve(__dirname, 'dist'),
@@ -17,22 +13,14 @@ const config = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
-  devServer: {
-    hot: true,
-    open: true,
-    static: {
-      directory: resolve(__dirname, 'dist'),
-    },
-    // contentBase: resolve(__dirname, 'dist'),
-    port: 8080,
-    host: 'localhost',
-    // index: 'index.html',
-    client: {
-      overlay: {
-        warnings: false,
-        errors: true,
-      },
-    },
+  optimization: {
+    minimize: true,
+    // minimizer: [new TerserJSPlugin({ parallel: true })]
+  },
+  performance: {
+    hints: 'warning',
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
   module: {
     rules: [
@@ -73,22 +61,11 @@ const config = {
     ],
   },
   plugins: [
-    // new MiniCSSExtractPlugin({
-    //   filename: 'css/main.css',
-    // }),
     new HTMLWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
       inject: 'body',
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: `${__dirname}/src/main.css`,
-    //       to: 'css/main.css',
-    //     },
-    //   ],
-    // }),
     new CleanWebpackPlugin(),
   ],
 }
