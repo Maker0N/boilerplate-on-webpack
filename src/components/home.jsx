@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react'
+import bull from '../img/bull.png'
 import '../main.css'
 
 const Home = () => {
@@ -10,6 +9,8 @@ const Home = () => {
   }
   return (
     <div
+      role="button"
+      tabIndex={0}
       className={rotate}
       onClick={(e) => {
         e.preventDefault()
@@ -18,8 +19,17 @@ const Home = () => {
           clearEffect()
         }, 4000)
       }}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') {
+          setRotate('rotate')
+        }
+        setTimeout(() => {
+          clearEffect()
+        }, 4000)
+      }}
     >
       Boilerplate
+      <img src={bull} alt="bull_logo" />
     </div>
   )
 }

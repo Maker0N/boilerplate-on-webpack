@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 // eslint-disable-next-line import/no-extraneous-dependencies
 // const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -64,11 +64,11 @@ const config = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/inline',
+        type: 'asset',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/inline',
+        type: 'asset',
       },
     ],
   },
@@ -81,14 +81,14 @@ const config = {
       template: './src/index.html',
       inject: 'body',
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: `${__dirname}/src/main.css`,
-    //       to: 'css/main.css',
-    //     },
-    //   ],
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${__dirname}/src/img`,
+          to: 'images',
+        },
+      ],
+    }),
     new CleanWebpackPlugin(),
   ],
 }
