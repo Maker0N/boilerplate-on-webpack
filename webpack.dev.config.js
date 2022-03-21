@@ -1,14 +1,20 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { resolve } = require('path');
+const webpack = require('webpack')
 // eslint-disable-next-line import/no-extraneous-dependencies
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 // eslint-disable-next-line import/no-extraneous-dependencies
 // const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+require('babel-polyfill')
+const dotenv = require('dotenv').config()
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 const config = {
   devtool: 'source-map',
-  entry: './src/index.jsx',
+  entry: ['babel-polyfill', './src/index.jsx'],
   mode: 'development',
   output: {
     filename: 'js/[name].[contenthash].js',
@@ -62,7 +68,7 @@ const config = {
           'css-loader',
           'sass-loader',
         ],
-        exclude: /node_modules/,
+        exclude: /node_modules/, // remove if use bootstrap
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -92,6 +98,10 @@ const config = {
       ],
     }),
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.parsed),
+      'process.env.NODE_ENV': JSON.stringify(isDevelopment ? 'development' : 'production'),
+    }),
   ],
 }
 
