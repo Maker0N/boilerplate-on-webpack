@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import bull from '../img/bull.png'
 import '../styles/main.css'
 
 const App = () => {
   const [rotate, setRotate] = useState('initial')
+
+  const serverButton = async () => {
+    await axios.get('http://localhost:8080/api/v1/')
+  }
+
   const clearEffect = () => {
+    serverButton()
     setRotate('back')
   }
+
   return (
     <div
       role="button"
