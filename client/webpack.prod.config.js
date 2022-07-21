@@ -7,7 +7,7 @@ const config = {
   entry: './src/index.jsx',
   output: {
     filename: 'js/[name].[contenthash].js',
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'server/client'),
     publicPath: '',
   },
   resolve: {

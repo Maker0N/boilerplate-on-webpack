@@ -35,7 +35,7 @@
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0"
+    "webpack-dev-server": "^4.9.3"
   },
   "scripts": {
     "dev:build": "webpack --config webpack.dev.config.js",
