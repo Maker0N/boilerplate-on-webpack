@@ -4,10 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const config = {
   mode: 'production',
-  entry: './src/index.jsx',
+  entry: ['babel-polyfill', './src/index.jsx'],
   output: {
     filename: 'js/[name].[contenthash].js',
-    path: resolve(__dirname, 'server/client'),
+    path: resolve(__dirname, 'client'),
     publicPath: '',
   },
   resolve: {
