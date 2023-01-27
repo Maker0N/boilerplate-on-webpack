@@ -29,6 +29,8 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.2.0",
     "sass": "^1.49.9",
@@ -39,8 +41,8 @@
     "webpack-dev-server": "^4.9.3"
   },
   "scripts": {
-    "dev:build": "webpack --config webpack.dev.config.js",
-    "dev:watch": "webpack-dev-server --config webpack.dev.config.js",
-    "prod:build": "webpack --config webpack.prod.config.js"
+    "dev:build": "NODE_OPTIONS='--openssl-legacy-provider' webpack --config webpack.dev.config.js",
+    "dev:watch": "NODE_OPTIONS='--openssl-legacy-provider' webpack-dev-server --config webpack.dev.config.js",
+    "prod:build": "NODE_OPTIONS='--openssl-legacy-provider' webpack --config webpack.prod.config.js"
   }
 }
